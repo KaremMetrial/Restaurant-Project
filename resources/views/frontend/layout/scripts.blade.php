@@ -1,4 +1,3 @@
-
 <!--jquery library js-->
 <script src="{{ asset('frontend/js/jquery-3.6.0.min.js') }}"></script>
 <!--bootstrap js-->
@@ -24,6 +23,35 @@
 <script src="{{ asset('frontend/js/wow.min.js') }}"></script>
 <!-- ex zoom js -->
 <script src="{{ asset('frontend/js/jquery.exzoom.js') }}"></script>
-
+<!--toastr js-->
+<script src="{{ asset('frontend/js/toastr.min.js') }}"></script>
 <!--main/custom js-->
 <script src="{{ asset('frontend/js/main.js') }}"></script>
+<script>
+    // Success Message
+    @if(Session::has('success'))
+    toastr.success("{{ Session::get('success') }}")
+    @endif
+
+    // Info Message
+    @if(Session::has('info'))
+    toastr.info("{{ Session::get('info') }}")
+    @endif
+
+    // Warning Message
+    @if(Session::has('warning'))
+    toastr.warning("{{ Session::get('warning') }}")
+    @endif
+
+    // Error Message
+    @if(Session::has('error'))
+    toastr.error("{{ Session::get('error') }}")
+    @endif
+
+    // Validation Errors
+    @if($errors->any())
+    @foreach($errors->all() as $error)
+    toastr.error("{{ $error }}")
+    @endforeach
+    @endif
+</script>
