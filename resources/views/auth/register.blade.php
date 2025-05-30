@@ -70,7 +70,7 @@
                                     </div>
                                 </div>
                             </form>
-                            <p class="create_account">Dont’t have an aceount ? <a href="sign_in.html">login</a></p>
+                            <p class="create_account">Dont’t have an aceount ? <a href="{{ route('login') }}">login</a></p>
                         </div>
                     </div>
                 </div>
