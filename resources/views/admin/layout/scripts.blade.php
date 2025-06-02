@@ -17,7 +17,7 @@
 <script src="{{ asset('admin/assets/js/custom.js') }}"></script>
 
 <!--toastr js-->
-<script src="{{ asset('admin/js/toastr.min.js') }}"></script>
+<script src="{{ asset('admin/assets/js/toastr.min.js') }}"></script>
 
 <script>
     // Success Message

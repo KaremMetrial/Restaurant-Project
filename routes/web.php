@@ -3,6 +3,7 @@
     use App\Http\Controllers\Frontend\FrontendController as FrontendControllerAlias;
     use App\Http\Controllers\ProfileController;
     use Illuminate\Support\Facades\Route;
+    use App\Http\Controllers\Admin\AdminAuthController;
 
     /*
     |--------------------------------------------------------------------------
@@ -16,6 +17,11 @@
     */
 
     Route::get('/', [FrontendControllerAlias::class,'index'])->name('home');
+
+
+    // ============================== Login ========================================================================
+    Route::get('admin/login', [AdminAuthController::class, 'login'])->name('admin.login')->middleware('guest');
+    // ============================== Login ========================================================================
 
     Route::get('/dashboard', function () {
         return view('dashboard');
