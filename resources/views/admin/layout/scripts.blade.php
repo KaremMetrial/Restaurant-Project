@@ -1,4 +1,3 @@
-
 <!-- General JS Scripts -->
 <script src="{{ asset('admin/assets/modules/jquery.min') }}.js"></script>
 <script src="{{ asset('admin/assets/modules/popper.js') }}"></script>
@@ -47,3 +46,4 @@
     @endforeach
     @endif
 </script>
+@stack('admin-js')

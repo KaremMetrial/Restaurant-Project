@@ -2,13 +2,33 @@
 
     namespace App\Services\Admin;
 
-    use Illuminate\Contracts\Auth\Authenticatable;
+    use App\Traits\FileUploadTrait;
+    use Illuminate\Http\Request;
 
     class ProfileService
     {
-        public function updateProfile(Authenticatable $user, array $data): bool
+        use FileUploadTrait;
+
+        public function updateProfile(Request $request): bool
         {
-            $user->update($data);
+            // Get validated data
+            $validated = $request->validated();
+
+            // Get user
+            $user = auth()->user();
+
+            // Upload file if exists
+            if ($request->hasFile('avatar')) {
+                // delete old avatar first
+                if ($user->avatar) {
+                    $this->delete($user->avatar, 'public');
+                }
+
+                // Upload new one
+                $validated['avatar'] = $this->upload($request, 'avatar', 'users/avatar', 'public');
+            }
+
+            $user->update($validated);
 
             return $user->wasChanged();
         }

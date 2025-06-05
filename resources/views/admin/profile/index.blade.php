@@ -8,12 +8,20 @@
         <div class="section-body">
             <div class="card card-primary">
                 <div class="card-header">
-                    <h4>Update Profile Info</h4>
+                    <h4>Update Profile</h4>
                 </div>
                 <div class="card-body">
                     <form action="{{ route('admin.profile.update') }}" method="POST" enctype="multipart/form-data">
                         @csrf
                         @method('PUT')
+                        <div class="form-group row mb-4">
+                            <div class="col-sm-12 col-md-7">
+                                <div id="image-preview" class="image-preview">
+                                    <label for="image-upload" id="image-label">Choose File</label>
+                                    <input type="file" name="avatar" id="image-upload">
+                                </div>
+                            </div>
+                        </div>
                         <div class="form-group">
                             <label for="name">Name</label>
                             <input type="text" name="name" id="name" class="form-control"
@@ -33,8 +41,7 @@
                     <h4>Update Password</h4>
                 </div>
                 <div class="card-body">
-                    <form action="{{ route('admin.profile.update.password') }}" method="POST"
-                          enctype="multipart/form-data">
+                    <form action="{{ route('admin.profile.update.password') }}" method="POST">
                         @csrf
                         @method('PUT')
                         <div class="form-group">
@@ -58,3 +65,19 @@
 
     </section>
 @endsection
+@push('admin-js')
+    <script src="{{ asset('admin/assets/modules/upload-preview/assets/js/jquery.uploadPreview.min.js') }}"></script>
+    <script src="{{ asset('admin/assets/js/page/features-post-create.js') }}"></script>
+    <script>
+        $(document).ready(function () {
+            $('.image-preview').css({
+                'background-image': 'url({{ Storage::url( auth()->user()->avatar ) }})',
+                'background-size': 'cover',
+                'background-position': 'center',
+            })
+        });
+    </script>
+@endpush
+
+
+

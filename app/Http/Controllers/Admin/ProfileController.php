@@ -15,7 +15,7 @@
 
         /**
          * @param ProfileService $profileService
-         *                                          inject ProfileService
+         * inject ProfileService
          */
         public function __construct(ProfileService $profileService)
         {
@@ -37,14 +37,8 @@
          */
         public function update(UpdateRequest $request): RedirectResponse
         {
-            // validation data
-            $validated = $request->validated();
-
-            // get user instance first
-            $user = auth()->user();
-
             // update data and check changes
-            $updated = $this->profileService->updateProfile($user, $validated);
+            $updated = $this->profileService->updateProfile($request);
 
             // return back with message
             return redirect()->back()->with(
@@ -60,14 +54,8 @@
          */
         public function updatePassword(UpdatePasswordRequest $request): RedirectResponse
         {
-            // validation data
-            $validated = $request->validated();
-
-            // get user
-            $user = auth()->user();
-
             // update data and check changes
-            $updated = $this->profileService->updateProfile($user, $validated);
+            $updated = $this->profileService->updateProfile($request);
 
             // return back with message
             return redirect()->back()->with(
