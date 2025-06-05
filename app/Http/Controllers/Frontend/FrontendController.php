@@ -1,14 +1,14 @@
 <?php
 
-    namespace App\Http\Controllers\Frontend;
+namespace App\Http\Controllers\Frontend;
 
-    use App\Http\Controllers\Controller;
-    use Illuminate\Contracts\View\View;
+use App\Http\Controllers\Controller;
+use Illuminate\Contracts\View\View;
 
-    class FrontendController extends Controller
+class FrontendController extends Controller
+{
+    public function index(): view
     {
-        public function index(): view
-        {
-            return view('frontend.home.index');
-        }
+        return view('frontend.home.index');
     }
+}

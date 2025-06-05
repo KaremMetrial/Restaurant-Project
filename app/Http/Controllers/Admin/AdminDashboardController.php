@@ -1,14 +1,14 @@
 <?php
 
-    namespace App\Http\Controllers\Admin;
+namespace App\Http\Controllers\Admin;
 
-    use App\Http\Controllers\Controller;
-    use Illuminate\Contracts\View\View;
+use App\Http\Controllers\Controller;
+use Illuminate\Contracts\View\View;
 
-    class AdminDashboardController extends Controller
+class AdminDashboardController extends Controller
+{
+    public function index(): View
     {
-        public function index(): View
-        {
-            return view("admin.dashboard.index");
-        }
+        return view('admin.dashboard.index');
     }
+}

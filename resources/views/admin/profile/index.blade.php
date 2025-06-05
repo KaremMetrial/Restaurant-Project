@@ -24,7 +24,7 @@
                             <input type="email" name="email" id="email" class="form-control"
                                    value="{{ auth()->user()->email }}">
                         </div>
-                        <button class="btn btn-primary" type="submit"> Save </button>
+                        <button class="btn btn-primary" type="submit"> Save</button>
                     </form>
                 </div>
             </div>
@@ -33,7 +33,8 @@
                     <h4>Update Password</h4>
                 </div>
                 <div class="card-body">
-                    <form action="{{ route('admin.profile.update') }}" method="POST" enctype="multipart/form-data">
+                    <form action="{{ route('admin.profile.update.password') }}" method="POST"
+                          enctype="multipart/form-data">
                         @csrf
                         @method('PUT')
                         <div class="form-group">
@@ -46,9 +47,10 @@
                         </div>
                         <div class="form-group">
                             <label for="password_confirmation">Confirm Password</label>
-                            <input type="password" name="password_confirmation" id="password_confirmation" class="form-control">
+                            <input type="password" name="password_confirmation" id="password_confirmation"
+                                   class="form-control">
                         </div>
-                        <button class="btn btn-primary" type="submit"> Save </button>
+                        <button class="btn btn-primary" type="submit"> Save</button>
                     </form>
                 </div>
             </div>

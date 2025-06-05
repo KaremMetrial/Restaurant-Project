@@ -1,14 +1,14 @@
 <?php
 
-    namespace App\Http\Controllers\Admin;
+namespace App\Http\Controllers\Admin;
 
-    use App\Http\Controllers\Controller;
-    use Illuminate\Contracts\View\View;
+use App\Http\Controllers\Controller;
+use Illuminate\Contracts\View\View;
 
-    class AdminAuthController extends Controller
+class AdminAuthController extends Controller
+{
+    public function login(): view
     {
-        public function login(): view
-        {
-            return view('admin.auth.login');
-        }
+        return view('admin.auth.login');
     }
+}

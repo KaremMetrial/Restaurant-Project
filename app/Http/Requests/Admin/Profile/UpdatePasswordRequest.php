@@ -5,7 +5,7 @@
     use Illuminate\Contracts\Validation\ValidationRule;
     use Illuminate\Foundation\Http\FormRequest;
 
-    class UpdateRequest extends FormRequest
+    class UpdatePasswordRequest extends FormRequest
     {
         /**
          * Determine if the user is authorized to make this request.
@@ -23,16 +23,15 @@
         public function rules(): array
         {
             return [
-                'name' => ['required', 'string', 'max:255'],
-                'avatar' => ['nullable', 'image', 'max:1024', 'mimes:jpeg,png,jpg,gif,svg'],
-                'email' => [
-                    'required',
-                    'string',
-                    'lowercase',
-                    'email',
-                    'max:255',
-                    'unique:users,email,' . $this->user()->id
-                ],
+                'current_password' => ['required', 'string', 'current_password'],
+                'password' => ['required', 'string', 'min:8', 'confirmed'],
+            ];
+        }
+
+        public function messages(): array
+        {
+            return [
+                'current_password.current_password' => 'Current password is incorrect.',
             ];
         }
     }
