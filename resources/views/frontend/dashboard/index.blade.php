@@ -20,9 +20,11 @@
                             <div class="dasboard_header">
                                 <div class="dasboard_header_img">
                                     <img src="{{ Storage::url( auth()->user()->avatar ) }}" alt="user"
-                                         class="img-fluid w-100">
+                                         class="img-fluid w-100" id="avatar">
                                     <label for="upload"><i class="far fa-camera"></i></label>
-                                    <input type="file" id="upload" hidden>
+                                    <form id="avatar-form">
+                                        <input type="file" id="upload" hidden name="avatar">
+                                    </form>
                                 </div>
                                 <h2>{{ auth()->user()->name }}</h2>
                             </div>
@@ -63,10 +65,18 @@
                                         aria-controls="v-pills-settings" aria-selected="false"><span><i
                                             class="fas fa-user-lock"></i></span> Change Password
                                 </button>
+                                <form method="POST" action="{{ route('logout') }}">
+                                    @csrf
 
-                                <button class="nav-link" type="button"><span> <i class="fas fa-sign-out-alt"></i>
-                                    </span> Logout
-                                </button>
+                                    <button class="nav-link" type="button" onclick="event.preventDefault();
+                                                this.closest('form').submit();">
+                                        <span>
+                                            <i class="fas fa-sign-out-alt"></i>
+                                    </span>
+                                        Logout
+                                    </button>
+                                </form>
+
                             </div>
                         </div>
                     </div>
@@ -1278,3 +1288,32 @@
     ==========================-->
 
 @endsection
+@push('frontend-js')
+    <script>
+        $(document).ready(function () {
+            $('#upload').on('change', function () {
+                var form = $('#avatar-form')[0];
+                var formData = new FormData(form);
+
+                $.ajax({
+                    url: "{{ route('profile.update.image') }}",
+                    headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
+                    method: 'POST',
+                    data: formData,
+                    processData: false,
+                    contentType: false,
+                    success: function (response) {
+                        if (response.status === 'success') {
+                            toastr.success(response.message);
+                        } else {
+                            toastr.warning(response.message);
+                        }
+                    },
+                    error: function (error) {
+                        toastr.error('something went wrong');
+                    }
+                });
+            });
+        });
+    </script>
+@endpush

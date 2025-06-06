@@ -45,6 +45,9 @@
 
             // Update Profile Password
             Route::put('/update-password', 'updatePassword')->name('update.password');
+
+            // Update Profile avatar
+            Route::post('/update-image', 'updateImage')->name('update.image');
         });
 // ============================== Profile ========================================================================
 

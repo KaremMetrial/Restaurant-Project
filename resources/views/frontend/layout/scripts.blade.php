@@ -55,3 +55,4 @@
     @endforeach
     @endif
 </script>
+@stack('frontend-js')

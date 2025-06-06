@@ -3,9 +3,11 @@
     namespace App\Http\Controllers\Frontend;
 
     use App\Http\Controllers\Controller;
+    use App\Http\Requests\User\Profile\UpdateImageRequest;
     use App\Http\Requests\User\Profile\UpdatePasswordRequest;
     use App\Http\Requests\User\Profile\UpdateRequest;
     use App\Services\User\ProfileService;
+    use Illuminate\Http\JsonResponse;
     use Illuminate\Http\RedirectResponse;
 
     class ProfileController extends Controller
@@ -52,6 +54,27 @@
             return redirect()->back()->with(
                 $updated ? 'success' : 'warning',
                 $updated ? 'Password updated' : 'No changes detected'
+            );
+        }
+
+        /**
+         * Update Profile avatar
+         * @param UpdateImageRequest $request
+         * @return jsonResponse
+         */
+        public function updateImage(UpdateImageRequest $request): jsonResponse
+        {
+            // update avatar and check changes
+            $updated = $this->profileService->updateProfile($request);
+
+            return response()->json(
+                $updated ? [
+                    'status' => 'success',
+                    'message' => 'Profile Avatar updated',
+                ] : [
+                    'status' => 'warning',
+                    'message' => 'No changes detected'
+                ]
             );
         }
     }
