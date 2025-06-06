@@ -1,35 +1,54 @@
 <?php
 
-use App\Http\Controllers\Admin\AdminAuthController;
-use App\Http\Controllers\Frontend\FrontendController as FrontendControllerAlias;
-use App\Http\Controllers\ProfileController;
-use Illuminate\Support\Facades\Route;
+    use App\Http\Controllers\Admin\AdminAuthController;
+    use App\Http\Controllers\Frontend\DashboardController;
+    use App\Http\Controllers\Frontend\FrontendController as FrontendControllerAlias;
+    use App\Http\Controllers\Frontend\ProfileController;
+    use Illuminate\Support\Facades\Route;
 
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider and all of them will
-| be assigned to the "web" middleware group. Make something great!
-|
-*/
+    /*
+    |--------------------------------------------------------------------------
+    | Web Routes
+    |--------------------------------------------------------------------------
+    |
+    | Here is where you can register web routes for your application. These
+    | routes are loaded by the RouteServiceProvider and all of them will
+    | be assigned to the "web" middleware group. Make something great!
+    |
+    */
 
-Route::get('/', [FrontendControllerAlias::class, 'index'])->name('home');
+// ============================== Guest ========================================================================
+    Route::middleware('guest')->group(function () {
+// ============================== Home Page ========================================================================
+        Route::get('/', [FrontendControllerAlias::class, 'index'])->name('home');
+// ============================== Home Page ========================================================================
 
-// ============================== Login ========================================================================
-Route::get('admin/login', [AdminAuthController::class, 'login'])->name('admin.login')->middleware('guest');
-// ============================== Login ========================================================================
+// ============================== Admin Login ========================================================================
+        Route::get('admin/login', [AdminAuthController::class, 'login'])->name('admin.login')->middleware('guest');
+// ============================== Admin Login ========================================================================
+    });
+// ============================== Guest ========================================================================
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
 
-Route::middleware('auth')->group(function () {
-    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
-    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
-    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
-});
+// ============================== Auth ========================================================================
+    Route::middleware('auth')->group(function () {
+// ============================== Dashboard ========================================================================
+        Route::get('/dashboard', [DashboardController::class, 'index'])->middleware(['auth', 'verified'])->name(
+            'dashboard'
+        );
+// ============================== Dashboard ========================================================================
 
-require __DIR__.'/auth.php';
+// ============================== Profile ========================================================================
+        Route::prefix('profile')->name('profile.')->controller(ProfileController::class)->group(function () {
+            // Update Profile Data
+            Route::put('/update', 'update')->name('update');
+
+            // Update Profile Password
+            Route::put('/update-password', 'updatePassword')->name('update.password');
+        });
+// ============================== Profile ========================================================================
+
+    });
+// ============================== Auth ========================================================================
+
+    require __DIR__ . '/auth.php';
