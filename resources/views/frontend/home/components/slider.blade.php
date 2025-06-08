@@ -1,4 +1,4 @@
-<section class="fp__banner" style="background: url(images/banner_bg.jpg);">
+<section class="fp__banner" style="background: url({{ asset('frontend/images/banner_bg.jpg') }});">
     <div class="fp__banner_overlay">
         <div class="row banner_slider">
             @foreach($sliders as $slider)
