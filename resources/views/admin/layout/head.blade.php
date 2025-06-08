@@ -12,7 +12,15 @@
 <link rel="stylesheet" href="{{ asset('admin/assets/css/style.css') }}">
 <link rel="stylesheet" href="{{ asset('admin/assets/css/components.css') }}">
 
+<!-- Toastr CSS -->
 <link rel="stylesheet" href="{{ asset('admin/assets/css/toastr.min.css') }}">
+
+<!-- DataTables CSS -->
+<link rel="stylesheet" href="{{ asset('admin/assets/css/datatables.css') }}">
+
+<!-- SweetAlert CSS -->
+<link rel="stylesheet" href="{{ asset('admin/assets/css/sweetalert2.min.css') }}">
+<!-- SweetAlert CSS -->
 
 <!-- Start GA -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=UA-94034622-3"></script>

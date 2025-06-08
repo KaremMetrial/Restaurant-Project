@@ -2,6 +2,7 @@
 
     use App\Http\Controllers\Admin\AdminDashboardController as AdminDashboardControllerAlias;
     use App\Http\Controllers\Admin\ProfileController;
+    use App\Http\Controllers\Admin\SliderController;
     use Illuminate\Support\Facades\Route;
 
     Route::group(['as' => 'admin.'], function () {
@@ -19,5 +20,10 @@
             Route::put('/update-password', 'updatePassword')->name('update.password');
         });
         // ======================================== Profile ==========================================================
+
+        // ======================================== Slider ==========================================================
+        Route::resource('sliders', SliderController::class);
+        // ======================================== Slider ==========================================================
+
 
     });
