@@ -10,6 +10,7 @@
                 <div class="card-body">
                     <div class="card-body">
                         <div id="accordion">
+                            <!-- why choose us title form -->
                             <div class="accordion">
                                 <div class="accordion-header" role="button" data-toggle="collapse" data-target="#panel-body-1" aria-expanded="true">
                                     <h4>Why Choose Us Section Title...</h4>
@@ -30,6 +31,7 @@
                                     <button type="submit" class="btn btn-primary">Save</button>
                                 </div>
                             </div>
+                            <!-- why choose us title form -->
                         </div>
                     </div>
                 </div>
