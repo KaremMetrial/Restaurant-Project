@@ -18,6 +18,7 @@
          * @var string
          */
         public const HOME = '/dashboard';
+
         public const ADMIN = '/admin/dashboard';
 
         /**
