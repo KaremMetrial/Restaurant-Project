@@ -17,6 +17,10 @@
                 <a href="{{ route('admin.sliders.index') }}" class="nav-link"><i
                         class="fas fa-tachometer-alt"></i><span>Slider</span></a>
             </li>
+            <li class="{{ request()->routeIs('admin.why-choose-us*') ? 'active' : '' }}">
+                <a href="{{ route('admin.why-choose-us.index') }}" class="nav-link"><i
+                        class="fas fa-tachometer-alt"></i><span>Why Choose Us</span></a>
+            </li>
         </ul>
     </aside>
 </div>

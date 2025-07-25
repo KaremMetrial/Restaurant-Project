@@ -3,6 +3,7 @@
     use App\Http\Controllers\Admin\AdminDashboardController as AdminDashboardControllerAlias;
     use App\Http\Controllers\Admin\ProfileController;
     use App\Http\Controllers\Admin\SliderController;
+    use App\Http\Controllers\Admin\WhyChooseUsController;
     use Illuminate\Support\Facades\Route;
 
     Route::group(['as' => 'admin.'], function () {
@@ -23,6 +24,11 @@
 
         // ======================================== Slider ==========================================================
         Route::resource('sliders', SliderController::class);
+        // ======================================== Slider ==========================================================
+
+
+        // ======================================== Why Choose Us ==========================================================
+        Route::resource('why-choose-us', WhyChooseUsController::class);
         // ======================================== Slider ==========================================================
 
 
