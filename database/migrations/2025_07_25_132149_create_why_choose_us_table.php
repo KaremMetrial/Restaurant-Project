@@ -14,7 +14,9 @@ return new class extends Migration
         Schema::create('why_choose_us', function (Blueprint $table) {
             $table->id();
             $table->string('title');
-            $table->text('description');
+            $table->text('short_description');
+            $table->string('icon');
+            $table->boolean('status')->default(true)->index();
             $table->timestamps();
         });
     }

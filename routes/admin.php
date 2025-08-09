@@ -28,6 +28,7 @@
 
 
         // ======================================== Why Choose Us ==========================================================
+        Route::put('why-choose-us-title/update', [WhyChooseUsController::class, 'updateTitle'])->name('why-choose-us-title.update');
         Route::resource('why-choose-us', WhyChooseUsController::class);
         // ======================================== Slider ==========================================================
 

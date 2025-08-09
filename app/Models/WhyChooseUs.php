@@ -8,4 +8,13 @@ use Illuminate\Database\Eloquent\Model;
 class WhyChooseUs extends Model
 {
     use HasFactory;
+    protected $fillable = [
+        'title',
+        'short_description',
+        'icon',
+        'status',
+    ];
+    protected $casts = [
+        'status' => 'boolean',
+    ];
 }

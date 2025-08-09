@@ -12,23 +12,36 @@
                         <div id="accordion">
                             <!-- why choose us title form -->
                             <div class="accordion">
-                                <div class="accordion-header" role="button" data-toggle="collapse" data-target="#panel-body-1" aria-expanded="true">
+                                <div class="accordion-header" role="button" data-toggle="collapse"
+                                     data-target="#panel-body-1" aria-expanded="true">
                                     <h4>Why Choose Us Section Title...</h4>
                                 </div>
                                 <div class="accordion-body collapse show" id="panel-body-1" data-parent="#accordion">
+                                    <form action="{{ route('admin.why-choose-us-title.update') }}" method="POST"
+                                          enctype="multipart/form-data" class="form-horizontal" }}
+                                    ">
+                                    @csrf
+                                    @method('PUT')
                                     <div class="form-group">
                                         <label for="">Top Title</label>
-                                        <input type="text" class="form-control">
+                                        <input name="why_choose_us_top_title"
+                                               value="{{ $sectionTitle['why_choose_us_top_title'] }}" type="text"
+                                               class="form-control">
                                     </div>
                                     <div class="form-group">
                                         <label for="">Main Title</label>
-                                        <input type="text" class="form-control">
+                                        <input name="why_choose_us_main_title"
+                                               value="{{ $sectionTitle['why_choose_us_main_title'] }}" type="text"
+                                               class="form-control">
                                     </div>
                                     <div class="form-group">
                                         <label for="">Sub Title</label>
-                                        <input type="text" class="form-control">
+                                        <input name="why_choose_us_sub_title"
+                                               value="{{ $sectionTitle['why_choose_us_sub_title'] }}" type="text"
+                                               class="form-control">
                                     </div>
                                     <button type="submit" class="btn btn-primary">Save</button>
+                                    </form>
                                 </div>
                             </div>
                             <!-- why choose us title form -->

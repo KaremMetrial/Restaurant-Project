@@ -17,7 +17,10 @@ class WhyChooseUsFactory extends Factory
     public function definition(): array
     {
         return [
-            //
+            'title' => $this->faker->sentence(),
+            'short_description' => $this->faker->paragraph(),
+            'icon' => "fa-solid fa-bars",
+            'status' => $this->faker->boolean(),
         ];
     }
 }
