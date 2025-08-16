@@ -31,7 +31,9 @@
         public function index(): View
         {
             return view('frontend.home.index', [
-                'sliders' => $this->frontendService->getSliders()
+                'sliders' => $this->frontendService->getSliders(),
+                'section_titles' => $this->frontendService->getSectionTitles(),
+                'why_choose_us' => $this->frontendService->getWhyChooseUs()
             ]);
         }
 
